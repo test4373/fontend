@@ -4,9 +4,8 @@ import eslint from "vite-plugin-eslint";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  // Vercel için base: '/', GitHub Pages için base: '/zenshin/'
-  // VITE_BASE_PATH environment variable ile kontrol edilir
-  base: process.env.VITE_BASE_PATH || '/',
+  // Local development için base: '/', production için base: '/'
+  base: '/',
   plugins: [react(), eslint()],
   
   // 🚀 PERFORMANCE OPTIMIZATIONS
