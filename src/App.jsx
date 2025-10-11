@@ -22,8 +22,8 @@ import AdminPanel from "./pages/AdminPanel";
 // const AnimePage = lazy(() => import("./pages/AnimePage"));
 // const Player = lazy(() => import("./pages/Player"));
 
-// Local development için basename: '/', production için basename: '/zenshin'
-const basename = import.meta.env.MODE === 'production' ? '/zenshin' : '/';
+// Vercel deployment için basename: '/', production için basename: '/'
+const basename = '/';
 
 const router = createBrowserRouter(
   [
