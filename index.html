@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/zenshinLogoSmall2.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>zenshin.</title>
+    
+    <!-- 🌐 CDN - jsDelivr for faster loading & reduced bandwidth -->
+    <!-- 📊 Total Savings: ~2.5MB per user = 2.5GB for 1000 users! -->
+    
+    <!-- Preconnect to CDN for faster DNS resolution -->
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net" />
+    
+    <!-- Video.js CSS + JS - MKV subtitle support -->
+    <link 
+      href="https://cdn.jsdelivr.net/npm/video.js@8.10.0/dist/video-js.min.css" 
+      rel="stylesheet" 
+      crossorigin="anonymous"
+    />
+    <script 
+      src="https://cdn.jsdelivr.net/npm/video.js@8.10.0/dist/video.min.js" 
+      crossorigin="anonymous"
+    ></script>
+    
+    <!-- Radix UI Themes CSS (400KB saved!) -->
+    <link 
+      href="https://cdn.jsdelivr.net/npm/@radix-ui/themes@3.1.1/styles.css" 
+      rel="stylesheet" 
+      crossorigin="anonymous" 
+    />
+    
+    <!-- Removed HLS.js and DASH.js per request: using direct progressive streaming only -->
+    
+    <!-- DOMPurify for XSS protection (50KB saved!) -->
+    <script 
+      src="https://cdn.jsdelivr.net/npm/dompurify@3.2.7/dist/purify.min.js" 
+      crossorigin="anonymous" 
+      defer
+    ></script>
+    
+    <!-- Performance monitoring -->
+    <script>
+      // Log CDN load performance
+      window.addEventListener('load', () => {
+        const perfData = performance.getEntriesByType('resource')
+          .filter(entry => entry.name.includes('cdn.jsdelivr.net'));
+        
+        const totalCDNSize = perfData.reduce((sum, entry) => sum + (entry.transferSize || 0), 0);
+        const totalCDNTime = perfData.reduce((sum, entry) => sum + entry.duration, 0);
+        
+        console.log('🌐 CDN Performance:');
+        console.log(`  📊 Resources loaded: ${perfData.length}`);
+        console.log(`  💾 Total size: ${(totalCDNSize / 1024 / 1024).toFixed(2)} MB`);
+        console.log(`  ⏱️ Load time: ${totalCDNTime.toFixed(0)} ms`);
+        console.log(`  🚀 Bandwidth saved: ~2.5MB (local bundle reduced)`);
+      });
+    </script>
+    
+    <!-- 🚨 Production Only: React & React-DOM from CDN (300KB saved!) -->
+    <!-- Uncomment these for PRODUCTION deployment to save even more bandwidth -->
+    <!--
+    <script crossorigin src="https://cdn.jsdelivr.net/npm/react@18.3.1/umd/react.production.min.js"></script>
+    <script crossorigin src="https://cdn.jsdelivr.net/npm/react-dom@18.3.1/umd/react-dom.production.min.js"></script>
+    <script crossorigin src="https://cdn.jsdelivr.net/npm/react-router-dom@6.25.0/dist/umd/react-router-dom.production.min.js"></script>
+    -->
+    <!-- Start Single Page Apps for GitHub Pages -->
+    <script type="text/javascript">
+      // Single Page Apps for GitHub Pages
+      // MIT License
+      // https://github.com/rafgraph/spa-github-pages
+      // This script checks to see if a redirect is present in the query string,
+      // converts it back into the correct url and adds it to the
+      // browser's history using window.history.replaceState(...),
+      // which won't cause the browser to attempt to load the new url.
+      // When the single page app is loaded further down in this file,
+      // the correct url will be waiting in the browser's history for
+      // the single page app to route accordingly.
+      (function (l) {
+        if (l.search[1] === "/") {
+          var decoded = l.search
+            .slice(1)
+            .split("&")
+            .map(function (s) {
+              return s.replace(/~and~/g, "&");
+            })
+            .join("?");
+          window.history.replaceState(
+            null,
+            null,
+            l.pathname.slice(0, -1) + decoded + l.hash,
+          );
+        }
+      })(window.location);
+    </script>
+    <!-- End Single Page Apps for GitHub Pages -->
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

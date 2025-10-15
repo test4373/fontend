@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Subtitle Test</title>
+  <style>
+    video {
+      width: 800px;
+      height: 450px;
+    }
+    
+    video::cue {
+      font-size: 32px !important;
+      color: yellow !important;
+      background-color: black !important;
+      font-weight: bold !important;
+    }
+  </style>
+</head>
+<body style="background: #111; color: white; padding: 20px;">
+  <h1>🔍 Subtitle Test</h1>
+  <video controls crossorigin="anonymous">
+    <source src="http://localhost:64621/streamfile/magnet%3A%3Fxt%3Durn%3Abtih%3AMEEEWBROYGSBAAUBB6M6JTO4GMCXWO6V%26tr%3Dhttp%253A%2F%2Fnyaa.tracker.wf%253A7777%2Fannounce%26tr%3Dudp%253A%2F%2Ftracker.opentrackr.org%253A1337%2Fannounce%26tr%3Dudp%253A%2F%2Ftracker.leechers-paradise.org%253A6969%2Fannounce%26tr%3Dudp%253A%2F%2Ftracker.internetwarriors.net%253A1337%2Fannounce%26tr%3Dudp%253A%2F%2Ftracker.cyberia.is%253A6969%2Fannounce%26dn%3D%255BSubsPlease%255D%2520Dandadan%2520-%252013%2520%25281080p%2529%2520%255BA3CDCC67%255D.mkv/%5BSubsPlease%5D%20Dandadan%20-%2013%20(1080p)%20%5BA3CDCC67%5D.mkv" type="video/webm">
+    <track 
+      kind="subtitles" 
+      src="http://localhost:64621/subtitles/magnet%3A%3Fxt%3Durn%3Abtih%3AMEEEWBROYGSBAAUBB6M6JTO4GMCXWO6V%26tr%3Dhttp%253A%2F%2Fnyaa.tracker.wf%253A7777%2Fannounce%26tr%3Dudp%253A%2F%2Ftracker.opentrackr.org%253A1337%2Fannounce%26tr%3Dudp%253A%2F%2Ftracker.leechers-paradise.org%253A6969%2Fannounce%26tr%3Dudp%253A%2F%2Ftracker.internetwarriors.net%253A1337%2Fannounce%26tr%3Dudp%253A%2F%2Ftracker.cyberia.is%253A6969%2Fannounce%26dn%3D%255BSubsPlease%255D%2520Dandadan%2520-%252013%2520%25281080p%2529%2520%255BA3CDCC67%255D.mkv/%5BSubsPlease%5D%20Dandadan%20-%2013%20(1080p)%20%5BA3CDCC67%5D.mkv"
+      srclang="en" 
+      label="English"
+      default>
+  </video>
+  
+  <div style="margin-top: 20px;">
+    <button onclick="checkSubtitles()">🔍 Check Subtitles</button>
+    <button onclick="forceShow()">✅ Force Show</button>
+    <pre id="info" style="margin-top: 10px; background: #222; padding: 10px; border-radius: 5px;"></pre>
+  </div>
+  
+  <script>
+    const video = document.querySelector('video');
+    const info = document.getElementById('info');
+    
+    video.addEventListener('loadedmetadata', () => {
+      console.log('✅ Video loaded');
+      forceShow();
+    });
+    
+    function checkSubtitles() {
+      const tracks = video.textTracks;
+      let output = `📊 Total tracks: ${tracks.length}\n\n`;
+      
+      for (let i = 0; i < tracks.length; i++) {
+        const track = tracks[i];
+        output += `Track ${i}:\n`;
+        output += `  Kind: ${track.kind}\n`;
+        output += `  Label: ${track.label}\n`;
+        output += `  Language: ${track.language}\n`;
+        output += `  Mode: ${track.mode}\n`;
+        output += `  Cues: ${track.cues ? track.cues.length : 'N/A'}\n\n`;
+      }
+      
+      info.textContent = output;
+      console.log(output);
+    }
+    
+    function forceShow() {
+      const tracks = video.textTracks;
+      for (let i = 0; i < tracks.length; i++) {
+        tracks[i].mode = 'showing';
+        console.log(`✅ Track ${i} set to SHOWING`);
+      }
+      checkSubtitles();
+    }
+    
+    // Auto-check after 2 seconds
+    setTimeout(checkSubtitles, 2000);
+  </script>
+</body>
+</html>

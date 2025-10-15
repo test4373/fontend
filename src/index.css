@@ -1,0 +1,92 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ------------------ CUSTOM SCROLL BAR ----------------- */
+/* Apply custom scrollbar styles */
+::-webkit-scrollbar {
+  width: 7px; /* Scrollbar width */
+  height: 7px; /* Scrollbar height */
+}
+
+/* Scrollbar track */
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Scrollbar thumb */
+::-webkit-scrollbar-thumb {
+  background: #4a4a4a; /* Thumb color */
+  border-radius: 0px; /* Thumb border-radius */
+}
+
+/* Scrollbar thumb states */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; /* Hover thumb color */
+}
+
+::-webkit-scrollbar-thumb:active {
+  background: #444; /* Active thumb color */
+}
+/* ------------------------------------------------------ */
+
+.draggable {
+  -webkit-app-region: drag;
+}
+.nodrag {
+  -webkit-app-region: no-drag;
+}
+
+/* For blur mask of banner image */
+.mask {
+  -webkit-mask: -webkit-gradient(
+    linear,
+    left top,
+    /* Start point of the gradient */ right top,
+    /* End point of the gradient */ from(rgba(0, 0, 0, 1)),
+    /* Fully opaque at the left */ to(rgba(0, 0, 0, 0)) /* Fully transparent at the right */
+  );
+  mask: linear-gradient(to right, rgba(0, 0, 0, 1) 30%, rgba(0, 0, 0, 0) 60%);
+}
+
+.skew3d {
+  transform: matrix(1, 0, -0.05, 1, 0, 0);
+}
+
+.tripp {
+  mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);
+}
+
+.stroke-text {
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.086); /* Stroke width and color */
+  color: transparent; /* Text fill color */
+}
+
+/* Hide scrollbar for horizontal scroll */
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;  /* Chrome, Safari and Opera */
+}
+
+/* Custom scrollbar for subtitle/audio menus */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 3px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(139, 92, 246, 0.6);
+  border-radius: 3px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(139, 92, 246, 0.8);
+}
